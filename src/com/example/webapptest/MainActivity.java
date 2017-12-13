@@ -4,12 +4,23 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
-
+	private WebView mWebView;
+	private WebSettings mWebSettings;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mWebView = (WebView)findViewById(R.id.webview);
+		mWebView.setWebViewClient(new WebViewClient());
+		mWebSettings = mWebView.getSettings();
+		mWebSettings.setJavaScriptEnabled(true);
+		
+		mWebView.loadUrl("http://m.naver.com");
 		setContentView(R.layout.activity_main);
 	}
 
